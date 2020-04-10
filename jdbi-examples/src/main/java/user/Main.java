@@ -1,6 +1,5 @@
 package user;
 
-import jdk.internal.org.jline.reader.History;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
@@ -15,7 +14,7 @@ public class Main {
             UserDao dao = handle.attach(UserDao.class);
 
             User user = User.builder()
-                    .id(Long)
+                    .id(Long.valueOf(1))
                     .username("Pinky")
                     .password("PinkyMouse")
                     .name("Miss Pink")
