@@ -21,3 +21,9 @@ public interface UserDao {
     )
     void createTable();
 }
+
+    /*Long insert(User user): az adott felhasználó mentése az adatbázisba, a felhasználó automatikusan generált azonosítóját adja vissza
+        Optional<User> findById(long id): az adott azonosítójú felhasználó betöltése az adatbázisból
+        Optional<User> findByUsername(String username): az adott felhasználói nevű felhasználó betöltése az adatbázisból
+        void delete(User user): az adott felhasználó törlése az adatbázisból
+        List<User> list(): az összes felhasználó betöltése az adatbázisból*/
