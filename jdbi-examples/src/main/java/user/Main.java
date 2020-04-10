@@ -23,6 +23,13 @@ public class Main {
                     .dob(LocalDate.parse("2020.04.10"))
                     .enabled(true)
                     .build();
+
+            dao.createTable();
+
+
+
+
+
         }
     }
 }
