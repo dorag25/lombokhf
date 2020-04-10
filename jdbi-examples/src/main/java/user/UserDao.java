@@ -1,10 +1,15 @@
 package user;
 
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
+import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
+import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import javax.swing.*;
 import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
 
 @RegisterBeanMapper(User.class)
 public interface UserDao {
@@ -20,6 +25,27 @@ public interface UserDao {
     )"""
     )
     void createTable();
+
+    @SqlUpdate("INSERT INTO user VALUES (:id, :username, :password, :name, :email, :gender, :dob, :enabled)")
+    Long insert(@BindBean User user);
+
+    @SqlQuery()
+    Optional<User> findById(@Bind("id") long id) ;
+
+    @SqlQuery()
+    Optional<User> findByUsername(@Bind("username") String username);
+
+    @SqlUpdate()
+    void delete(@BindBean User user);
+
+    @SqlQuery()
+    List<User> list() ;
+
+
+
+
+
+
 }
 
     /*Long insert(User user): az adott felhasználó mentése az adatbázisba, a felhasználó automatikusan generált azonosítóját adja vissza
