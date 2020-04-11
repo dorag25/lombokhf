@@ -25,6 +25,15 @@ public class Main {
                     .build();
 
             dao.createTable();
+            dao.insert(user);
+            //dao.findById();
+            //dao.findByUsername();
+            dao.delete(user);
+            dao.list();
+            dao.list().stream().forEach(System.out::println);
+
+
+
 
 
 
