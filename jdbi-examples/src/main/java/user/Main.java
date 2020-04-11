@@ -14,13 +14,13 @@ public class Main {
             UserDao dao = handle.attach(UserDao.class);
 
             User user = User.builder()
-                    .id(Long.valueOf(1))
+                    .id(Long.valueOf(1))       //???????????
                     .username("Pinky")
                     .password("PinkyMouse")
                     .name("Miss Pink")
                     .email("pinky@vmi.hu")
                     .gender(User.Gender.FEMALE)
-                    .dob(LocalDate.parse("2020.04.10"))
+                    .dob(LocalDate.parse("2020-04-10"))
                     .enabled(true)
                     .build();
 

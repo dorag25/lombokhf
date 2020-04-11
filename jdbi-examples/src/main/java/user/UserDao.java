@@ -14,11 +14,23 @@ import java.util.Optional;
 
 @RegisterBeanMapper(User.class)
 public interface UserDao {
-    @SqlUpdate("CREATE TABLE user(id IDENTITY PRIMARYKEY, usrename VARCHAR(255),password VARCHAR(255), name VARCHAR(255), email VARCHAR(255), gender Enum('MALE','FEMALE'), dob Date, enabled VARCHAR(255))")
-    @GetGeneratedKeys
+    @SqlUpdate("""
+    CREATE TABLE user(
+    id IDENTITY PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    name VARCHAR(255),
+    email VARCHAR(255),
+    gender Enum('MALE','FEMALE'),
+    dob Date,
+    enabled VARCHAR(255))
+    """
+    ) //?????
     void createTable();
 
+
     @SqlUpdate("INSERT INTO user(id,username, password, name, email, gender,dob, enabled) VALUES (:id, :username, :password, :name, :email, :gender, :dob, :enabled)")
+    @GetGeneratedKeys
     Long insert(@BindBean User user);
 
     @SqlQuery("SELECT * FROM user WHERE id = :id")
@@ -27,7 +39,7 @@ public interface UserDao {
     @SqlQuery("SELECT * FROM user WHERE username = :username")
     Optional<User> findByUsername(@Bind("username") String username);
 
-    @SqlUpdate("DELETE * FROM user WHERE username= :username") //????????????
+    @SqlUpdate("DELETE FROM user WHERE username= :username") //????????????
     void delete(@BindBean User user);
 
     @SqlQuery("SELECT * FROM user")
