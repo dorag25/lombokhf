@@ -26,18 +26,13 @@ public class Main {
 
             dao.createTable();
             dao.insert(user);
-            //dao.findById();
-            //dao.findByUsername();
-            dao.delete(user);
+            dao.findById(user.getId());  //?????????
+            dao.findByUsername(user.getUsername());     //????????????
+
+            System.out.println(user); ///???
             dao.list();
             dao.list().stream().forEach(System.out::println);
-
-
-
-
-
-
-
+            dao.delete(user);
 
         }
     }
